@@ -15,8 +15,8 @@ const Signup = () => {
     else setPassError("");
   }, [confirmPassword]);
   return (
-    <div className="h-full min-h-screen w-full flex bg-gradient-to-r from-teal-500 via-yellow-300 to-teal-500 justify-center items-center">
-      <div className="min-w-[480px] h-auto w-auto p-8 rounded-lg flex flex-col gap-8">
+    <div className=" flex  mx-[20%] bg-gradient-to-r from-teal-500 via-yellow-300 to-teal-500 justify-center items-center content-center">
+      <div className="  min-w-[480px]   p-6 rounded-lg flex flex-col gap-8 ">
         <h1 className="text-4xl ">Signup</h1>
         <div className="justify-center items-center flex flex-col">
           <TextField
@@ -80,7 +80,7 @@ const Signup = () => {
             Create Account
           </Button>
           <p className="p-2">
-            Alreday have an account?{" "}
+            Already have an account?{" "}
             <span>
               <Link to="/login">login</Link>
             </span>
@@ -88,6 +88,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

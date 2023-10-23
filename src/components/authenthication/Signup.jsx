@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import {createUserWithEmailAndPassword,updateProfile} from 'firebase/auth'
 import {auth} from '../../firebase'
+import Alert from '@mui/material/Alert';
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -20,6 +21,7 @@ const Signup = () => {
     setPassError("");
     createUserWithEmailAndPassword(auth, email,password).then(async(res) => {
       const user=res.user
+      console.log(user)
       await updateProfile(user,{
         displayName:name
       })
@@ -27,10 +29,13 @@ const Signup = () => {
       setEmail('')
       setPassword('')
       navigate('/login')
-    }).catch((err) => console.log("Error",err))
+    }).catch((err) => {
+      setPassError(err.message) 
+      
+    })
   }
   return (
-    <div className=" flex  bg-gradient-to-r from-teal-500 via-yellow-300 to-teal-500 justify-center items-center content-center">
+    <div className=" flex  bg-gradient-to-r from-teal-500 via-yellow-300 to-teal-500 justify-center items-center content-center min-h-screen">
       <div className="  min-w-[480px]   p-6 rounded-lg flex flex-col gap-8 ">
         <h1 className="text-4xl ">Signup</h1>
         <div className="justify-center items-center flex flex-col">
@@ -89,11 +94,11 @@ const Signup = () => {
             required
           />
         </div>
-        {passError && <div>{passError}</div>}
         <div className="flex flex-col">
           <Button variant="contained" color="primary" onClick={handleSubmit}>
             Create Account
           </Button>
+          {passError && <Alert severity="error" className="my-2">{passError}</Alert>}
           <p className="p-2">
             Already have an account?{" "}
             <span>

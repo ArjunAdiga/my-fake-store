@@ -8,17 +8,20 @@ import {auth} from '../../firebase'
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passError, setPassError] = useState("");
+
   const navigate=useNavigate()
 
   const handleSubmit = () => {
     signInWithEmailAndPassword(auth, email,password).then(async(res) => {
       setEmail('')
       setPassword('')
-      navigate('/')
-    }).catch((err) => console.log("Error",err))
+      navigate('/home')
+    }).catch((err) => {setPassError(err.message)  
+      console.log("Error",err)})
   }
   return (
-    <div className=" flex  bg-gradient-to-r from-teal-500 via-yellow-300 to-teal-500 justify-center items-center content-center">
+    <div className=" flex  bg-gradient-to-r from-teal-500 via-yellow-300 to-teal-500 justify-center items-center content-center min-h-screen">
     <div className="  min-w-[480px]   p-6 rounded-lg flex flex-col gap-8 ">
       <h1 className="text-4xl ">Login</h1>
       
@@ -54,6 +57,7 @@ const Login = () => {
         <Button variant="contained" color="primary" onClick={handleSubmit}>
           Login
         </Button>
+        {passError && <Alert severity="error" className="my-2">{passError}</Alert>}
         <p className="p-2">
           Don't' have an account?{" "}
           <span>

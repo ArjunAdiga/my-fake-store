@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Header";
-import Card from "../Card/Card";
+import Cards from "../Card/Card";
+import Footer from "../Footer";
+
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -24,18 +26,17 @@ const Home = () => {
       <h1 className="text-4xl font-bold text-center mt-8 mb-4">Our Store</h1>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {products.map((item) => (
-          <Card
+          <Cards
             key={item.id}
             image={item.image}
             title={item.title}
             price={item.price}
             category={item.category}
             rating={item.rating.rate}
-          >
-
-          </Card>
+          />
         ))}
       </div>
+      <Footer/>
     </div>
   );
 };

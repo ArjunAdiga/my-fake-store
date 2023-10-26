@@ -37,6 +37,14 @@ function Header() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  const openProduct = () => {
+    setAnchorElNav(null);
+    navigate('/products')
+  }
+  const openHome = () => {
+    setAnchorElNav(null);
+    navigate('/home')
+  }
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -103,8 +111,11 @@ function Header() {
                 display: { xs: 'block', md: 'none' },
               }}
               
-            >              
-                <MenuItem  onClick={handleCloseNavMenu} className='justify-center items-center flex'>
+            >   
+                <MenuItem  onClick={openHome} className='justify-center items-center flex'>
+                  <Typography textAlign="center">Home</Typography>
+                </MenuItem>           
+                <MenuItem  onClick={openProduct} className='justify-center items-center flex'>
                   <Typography textAlign="center">Products</Typography>
                 </MenuItem>
                 <MenuItem  onClick={handleCloseNavMenu}>
@@ -132,8 +143,14 @@ function Header() {
             Fake Store
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} className='justify-center items-center flex'>
+          <Button
+                onClick={openHome}
+                sx={{ my: 2, color: 'white', display: 'block' , }}             
+              >
+                Home
+              </Button>
               <Button
-                onClick={handleCloseNavMenu}
+                onClick={openProduct}
                 sx={{ my: 2, color: 'white', display: 'block' , }}             
               >
                 Products

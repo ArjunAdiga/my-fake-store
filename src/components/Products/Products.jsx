@@ -20,6 +20,7 @@ const Products = () => {
     try {
       const res = await fetch("https://fakestoreapi.com/products");
       const data = await res.json();
+      console.log(data)
       setCatPro(data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -35,7 +36,6 @@ const Products = () => {
       const res = await fetch(
         `https://fakestoreapi.com/products/category/${category}`
       );
-      console.log(res);
       const data = await res.json();
       setCatPro(data);
     } catch (error) {
@@ -44,7 +44,7 @@ const Products = () => {
   };
 
   return (
-    <div>
+    <div className="bg-cover bg-center h-screen" >
       <Header />   
       <h1 className="text-4xl font-bold text-center mt-8 mb-4">Our Products</h1>
       <div className="flex">

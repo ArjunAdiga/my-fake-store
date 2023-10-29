@@ -45,6 +45,14 @@ function Header() {
     setAnchorElNav(null);
     navigate('/home')
   }
+  const openAbout = () => {
+    setAnchorElNav(null);
+    navigate('/about')
+  }
+  const openCart = () => {
+    setAnchorElUser(null);
+    navigate('/cart')
+  }
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -60,7 +68,7 @@ function Header() {
 
 
   return (
-    <AppBar position="static">
+    <AppBar position="static">     
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <LocalGroceryStoreIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -118,7 +126,7 @@ function Header() {
                 <MenuItem  onClick={openProduct} className='justify-center items-center flex'>
                   <Typography textAlign="center">Products</Typography>
                 </MenuItem>
-                <MenuItem  onClick={handleCloseNavMenu}>
+                <MenuItem  onClick={openAbout}>
                   <Typography textAlign="center">About</Typography>
                 </MenuItem>
             </Menu>
@@ -156,7 +164,7 @@ function Header() {
                 Products
               </Button>
               <Button
-                onClick={handleCloseNavMenu}
+                onClick={openAbout}
                 sx={{ my: 2, color: 'white', display: 'block' }}
                 
               >
@@ -184,7 +192,7 @@ function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >            
-                <MenuItem onClick={handleCloseUserMenu} className='flex flex-col justify-start'>
+                <MenuItem onClick={openCart} className='flex flex-col justify-start'>
                   <Typography textAlign="center" >Cart</Typography>
                   
                 </MenuItem>
